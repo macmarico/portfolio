@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://kit.fontawesome.com/d7a9fd4577.js" crossorigin="anonymous"></script>
+
+<style>
+
+@font-face {
+    font-family: Roboto-Regular;
+    src: url('font/Roboto-Regular.ttf');
+}
+
+body{
+
+font-family: Roboto-Regular;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+@keyframes zoom {
+ from  { transform: scale(0.6,0.6);  opacity: 0;}
+ 
+ to  {transform: scale(1,1); opacity: 1;}
+ 
+ }
+
+ @keyframes shrink {
+  from  { transform: scale(1.4,1.4);  opacity: 0;}
+ 
+ to  {transform: scale(1,1); opacity: 1;}
+ 
+ }
+
+ @keyframes slide {
+  from  { transform: translate(50px);  opacity: 0;}
+ 
+ to  {transform:  opacity: 1;}
+ 
+ }
+
+
+ @keyframes rotateZoom {
+  from  { transform: scale(0.8,0.8);  opacity: 0; }
+ 
+ to  {transform:  scale(1,1); opacity: 1; }
+ 
+ }
+.home{
+
+  display: flex;
+  height: 100vh;
+
+
+}
+
+.homeRight{
+
+  animation-name: zoom;
+  animation-duration: 1s;
+  
+}
+
+.homeLeft{
+ 
+ 
+}
+
+.homeRight img{
+
+  width: 100%;
+}
+
+.navgation{
+
+  display: flex;
+
+  animation-name: slide;
+  animation-duration: 1s;
+ 
+
+}
+.navgation div{
+
+  box-sizing: border-box;
+  color: black;
+ padding: 20px;
+ font-size: 20px;
+ transition: color 2s;
+}
+
+.navgation div:hover{
+ 
+ color: purple;
+ font-weight: bold;
+
+}
+
+.introContainer{
+ 
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  justify-content: center;
+  animation-name: slide;
+  animation-duration: 1s;
+
+  
+}
+
+.introContainer > div{
+  
+  box-sizing: border-box;
+  text-align: left;
+  font-size: 35px;
+  padding-left: 20px;
+
+}
+
+.introContainer button{
+
+   box-sizing: border-box;
+   background-color: transparent;
+   border: 2px solid black;
+   border-radius: 25px;
+   font-size: 20px;
+   padding: 15px;
+   margin-right: 20px;
+   margin-top: 20px;
+   width: 27%;
+   
+
+}
+
+.introContainer button:hover{
+
+background-color: purple;
+color: white;
+transition: background-color 0.7s;
+border: 2px solid transparent;
+
+}
+
+.heading{
+
+text-align: center;
+ margin: 10vh;
+
+}
+
+
+.projectCont{
+
+   display: flex;
+   margin: 20px;
+   background-color: white;
+}
+
+.projectCont > div{
+  
+  background-color : #f1f1f1;
+  text-align: center;
+ 
+  height: auto;
+ 
+ 
+}
+
+.projectCont button:hover{
+
+background-color: purple;
+color: white;
+transition: background-color 0.7s;
+border: 2px solid transparent;
+
+}
+
+.projectCont  img{
+  display: block;
+  width: 100%;
+  margin-left: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+   border-radius: 15px;
+}
+
+
+
+.aboutCont{
+
+display: flex;
+flex-wrap: wrap;
+justify-content: space-around;
+
+}
+
+.aboutCont > div{
+
+margin: 20px;
+flex-basis: 20%;
+height: 30vh;
+color: white;
+text-align: center;
+
+
+}
+
+
+
+.aboutCont img{
+
+ display: block;
+ margin: auto;
+ padding: 10px;
+  width: 40%;
+}
+
+
+.skillsCont{
+
+display: flex;
+
+justify-content: center;
+background-color: white;
+
+}
+
+.skillsCont > div{
+
+background-color :#f1f1f1;
+text-align: center;
+flex-basis: 30%;
+height: 70vh;
+border-radius: 15px;
+margin: 10px;
+
+
+}
+
+.backend > div{
+  padding: 10px;
+  font-size: 20px;
+}
+
+.frontend > div{
+  padding: 20px;
+  font-size: 20px;
+}
+
+.contact{
+
+   display: flex;
+   height: 70vh;
+
+}
+
+.contact div{
+
+
+
+}
+
+input{
+  display: block;
+  background-color: #f1f1f1;
+ border: none;
+ border-radius: 15px;
+ padding: 10px;
+ width: 50%;
+ margin: 20px auto;
+
+
+}
+
+textarea{
+  display: block;
+  background-color: #f1f1f1;
+  border: none;
+ border-radius: 15px;
+ padding: 10px;
+ width: 50%;
+ margin: 20px auto;
+
+}
+
+button{
+
+background-color: transparent;
+border: 2px solid #333;
+ border-radius: 15px;
+padding: 10px;
+width: 20%;
+margin: 20px auto;
+
+}
+.footer {
+
+  
+  padding: 30px;
+  background-color: #f1f1f1;
+  text-align: center;
+  border-radius: 10px;
+  font-size: 20px;
+
+}
+
+</style>
+
+
+</head>
+
+<body>
+
+<div class="home">
+
+
+<div class="homeLeft" style="flex-basis: 55%;">
+
+
+   
+
+  <div class="navgation">
+
+  <div style="color: purple; font-weight: bold;">Home</div>
+  <div>About</div>
+  <div>Contact</div>
+
+
+  </div>
+
+
+<div class="introContainer" >
+
+<div>Hello, I'm <b style="color:purple;">Manish.</b><br> <span > I'm a full stack web developer.</span></div>
+
+<div><button onclick="window.location.href='#IDprojects'">My projects</button> <button onclick="window.location.href='#IDabout'">Profile</button> <button>Resume</button></div>
+
+<div style="margin-top: 5vh; font-size: 20px; color: #A9A9A9;">Worried about my coding skills here is my <b onclick="location.href='https://github.com/macmarico?tab=repositories'">github</b> account.</div>
+
+</div>
+</div>
+
+
+<div class="homeRight" style="flex-basis: 45%;">
+
+  <img src="images/background.png" alt="">
+
+</div>
+
+
+</div>
+
+
+<div class="heading" id="IDprojects">
+<h1>PROJECTS</h1>
+</div>
+
+
+<div class="projectCont">
+
+ <div style="flex-basis: 25%;"> 
+
+ <div style="padding: 20vh 20px;">
+  <h3>A feature rich anonymous messenger app</h3>
+
+  <div>See who's online, send messages and reactions<br>
+ Set status and find intresting people all around the world</div>
+
+<button style="width: 50%;" onclick="location.href='http:\\sweeters.co/home.php'">Open project</button>
+</div>
+</div>
+    <div style="flex-basis: 75%;"><img src="images/project1.png" ></div>
+    
+
+
+</div>
+
+
+
+<div id="IDabout"  style="background-color: purple; border-radius: 15px; margin: 10vh 20px 0 20px;">
+<div  style="color: white; text-align: center; padding: 10px 0 10vh 0;">
+    <h1>About</h1>
+    </div>
+
+    <div class="aboutCont">
+
+        <div><img src="images/responsive.svg" >
+        <div>My layouts will work on any device, big or small.</div>
+      </div>
+        <div><img src="images/paint.svg" >
+          <div>Strong preference for easy to use, intuitive UX/UI.</div>
+        </div>
+        <div><img src="images/speed.svg" >
+          <div>Fast load times and lag free interaction, my highest priority.</div>
+        </div>
+        <div><img src="images/process.svg" >
+           <div>Websites don't have to be static, I love making pages come to life.</div>
+      </div>
+       
+    
+  </div>   
+    </div>
+
+    <div class="skillsCont">
+
+      <div  class="frontend">
+      <h3>I make sure Websites look beautifull and for that i use these tools</h3>
+      <div>HTML</div>
+      <div>CSS</div>
+      <div>Javascript</div>
+      <div>photoshop</div>
+      <div>react.js (currently learning)</div>
+
+
+      </div>
+
+
+      <div class="backend">
+
+        <h3>Im a passionate beckend developer and i make feature rich Websites using these tools</h3>
+        <div>PHP</div>
+        <div>Mysql</div>
+        <div>XML</div>
+        <div>AJAX</div>
+        <div>JASON</div>
+        <div>XML</div>
+        <div>node.js (currently learning)</div>
+
+      </div>
+     
+
+  </div>
+
+
+
+    <div class="heading" style="padding: 5vh 0 ;">
+      <h1>Get in touch</h1>
+      </div>
+
+      <div class="contact">
+       
+
+        <div style="flex-basis: 70%;">
+          <h2 style="text-align: center;">Contact</h2>
+       <input type="text" placeholder="email">
+      <textarea rows="5" placeholder="message"></textarea>
+      <button style="display: block; width: 10%;">submit</button>
+        
+    </div>
+
+    <div style="flex-basis: 30%;">
+       <div style="width: 50%;">
+      <div><i class="fab fa-instagram fa-4x"></i></div>
+      <div><i class="fab fa-github fa-4x"></i> </div>
+      <div> <i class="fab fa-twitter-square fa-4x"></i></div>
+      <div> <i class="fab fa-linkedin-in fa-4x"></i></div>
+    </div>  
+
+    </div>
+      </div>
+
+
+<div class= "footer ProximaNovaRegular">
+
+<b>MANISH CHANDRA</b>	&#169 2020
+
+</div>
+
+
+</body>
+</html>
