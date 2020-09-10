@@ -59,11 +59,16 @@ html {
 
 .homeRight{
 
+  flex-basis: 45%;
   animation-name: zoom;
   animation-duration: 1s;
   
 }
 
+.homeLeft{
+
+  flex-basis: 55%;
+}
 
 
 .homeRight img{
@@ -222,6 +227,7 @@ display: flex;
 justify-content: center;
 background-color: white;
 
+
 }
 
 .skillsCont > div{
@@ -299,6 +305,83 @@ margin: 20px auto;
 
 }
 
+
+
+
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+
+ .homeRight{
+
+  display: none;
+  flex-basis: 100%;
+
+ }
+
+ .homeLeft{
+
+flex-basis: 100%;
+
+}
+
+ .introContainer > div{
+
+   text-align: center;
+
+
+ }
+
+ .navgation{
+
+  justify-content: center;
+
+}
+
+.introContainer button{
+
+box-sizing: border-box;
+background-color: transparent;
+border: 2px solid black;
+border-radius: 25px;
+font-size: 20px;
+padding: 15px;
+margin-right: 5px;
+margin-top: 20px;
+width: 30%;
+
+
+}
+
+
+.introContainer > div{
+  
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 30px;
+  
+
+}
+
+
+.aboutCont > div{
+
+flex-basis: 100%;
+height: auto;
+
+}
+
+.skillsCont > div{
+
+flex-basis: 50%;
+height: auto;
+border-radius: 15px;
+margin: 5px;
+
+
+
+}
+
 </style>
 
 
@@ -309,7 +392,7 @@ margin: 20px auto;
 <div class="home">
 
 
-<div class="homeLeft" style="flex-basis: 55%;">
+<div class="homeLeft">
 
 
    
@@ -328,7 +411,7 @@ margin: 20px auto;
 
 <div>Hello, I'm <b style="color:purple;">Manish.</b><br> <span > I'm a full stack web developer.</span></div>
 
-<div><button onclick="window.location.href='#IDprojects'">My projects</button> <button onclick="window.location.href='#IDabout'">Profile</button> <button>Resume</button></div>
+<div><button onclick="window.location.href='#IDprojects'">Projects</button> <button onclick="window.location.href='#IDabout'">Profile</button> <button>Resume</button></div>
 
 <div style="margin-top: 10px; font-size: 20px; color: #A9A9A9;">Worried about my coding skills here is my <b onclick="location.href='https://github.com/macmarico?tab=repositories'">github</b> account.</div>
 
@@ -336,7 +419,7 @@ margin: 20px auto;
 </div>
 
 
-<div class="homeRight" style="flex-basis: 45%;">
+<div class="homeRight">
 
   <img src="images/background.png" alt="">
 
