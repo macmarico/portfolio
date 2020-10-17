@@ -1,3 +1,4 @@
+var PORT = process.env.PORT;
 const fs = require('fs');
 const http = require('http');
 const url = require('url');
@@ -31,6 +32,6 @@ const server = http.createServer((req, res)=>{
 
 });
 
-server.listen(process.env.PORT,()=>{
+server.listen(PORT,()=>{
     console.log('listening to port 3000')
 });
