@@ -2,7 +2,6 @@ const fs = require('fs');
 const http = require('http');
 const url = require('url');
 const lookup = require('mime-types').lookup;
-
 const server = http.createServer((req, res)=>{
     console.log('thankyou for requesting');
     let parsedURL = url.parse(req.url, true);
@@ -32,6 +31,6 @@ const server = http.createServer((req, res)=>{
 
 });
 
-server.listen(3000,()=>{
+server.listen(process.env.PORT,()=>{
     console.log('listening to port 3000')
 });
