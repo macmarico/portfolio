@@ -1,5 +1,6 @@
-var PORT = process.env.PORT;
+var PORT = process.env.PORT | 3000;
 const fs = require('fs');
+const patdh = require('path');
 const http = require('http');
 const url = require('url');
 const lookup = require('mime-types').lookup;
@@ -9,11 +10,11 @@ const server = http.createServer((req, res)=>{
     let path = parsedURL.path.replace(/^\/+|\/+$/g, "");
 
     if(path == ''){
-        path = 'client/index.html';
+        path = patdh.resolve('client/index.html');
     }
     console.log(`requested path is ${path}`);
 
-    let file = __dirname + '/portfolio/' + path;
+    let file =  patdh.resolve('client/index.html');
     fs.readFile(file, (err, content)=>{
         if(err){
             console.log(`file not found ${file}`);
