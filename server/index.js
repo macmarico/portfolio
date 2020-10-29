@@ -9,7 +9,7 @@ const server = http.createServer((req, res)=>{
     let path = parsedURL.path.replace(/^\/+|\/+$/g, "");
 
     if(path == ''){
-        path = 'index.html';
+        path = 'client/index.html';
     }
     console.log(`requested path is ${path}`);
 
