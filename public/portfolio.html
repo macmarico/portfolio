@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>portfolio</title>
+    <style>
+      @font-face {
+        font-family: Roboto-Regular;
+        src: url("./fonts/Roboto-Regular.ttf");
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        position: fixed;
+        font-family: Roboto-Regular;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        cursor: grab;
+        overflow: hidden;
+      }
+
+      /* Hide scrollbar for Chrome, Safari and Opera */
+      body::-webkit-scrollbar {
+        display: none;
+      }
+
+      .cursor {
+        width: 80px;
+        height: 80px;
+        border: 1px solid white;
+        border-radius: 50%;
+        position: absolute;
+        opacity: 0.5;
+        z-index: 1;
+        background: #4a5fc1;
+        transition-duration: 200ms;
+        transition-timing-function: ease-out;
+        pointer-events: none;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+      }
+
+      .menu {
+        position: absolute;
+        display: flex;
+        top: 0;
+        right: -40vw;
+        background-color: #4a5fc1;
+        height: calc(100vh);
+        opacity: 0.9;
+        width: 20vw;
+        z-index: 1;
+        border-radius: 20px 0 0 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        transition: 500ms;
+      }
+      .menuOpen {
+        top: 0;
+        right: 0;
+      }
+      .menuCloseBtnCont {
+        position: absolute;
+        display: flex;
+        padding: 10px;
+        top: 50vh;
+        right: calc(-20vw + 50px);
+        width: 60px;
+        height: 60px;
+        background-color: #333;
+        border-radius: 50%;
+        z-index: 1;
+        transition: 500ms;
+      }
+
+      .menuCloseBtnContActive {
+        right: calc(20vw + 50px);
+      }
+
+      .menu div {
+        padding: 10px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: white;
+        cursor: pointer;
+      }
+
+      .header {
+        display: flex;
+        width: 100vw;
+        height: 80px;
+        background-color: white;
+      }
+      .page-subtitle-container {
+        display: flex;
+        flex: 0 0 400px;
+        height: 100%;
+        background-color: #4a5fc1;
+      }
+      .pageBorderDesignTop {
+        flex: 0 0 calc(100% - 1300px);
+        margin: auto;
+        height: 3px;
+        background-color: #c4c4c4;
+      }
+      .header-contacts-container {
+        display: flex;
+        text-transform: uppercase;
+        font-weight: bold;
+        flex: 0 0 600px;
+        height: 100%;
+        background-color: white;
+        color: #333;
+      }
+      .page-subtitle {
+        text-align: center;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        margin: auto;
+        width: 150px;
+        padding: 10px;
+        background-color: white;
+        color: #333;
+      }
+      .header-contacts-container div {
+        margin: auto;
+      }
+      .header-contacts-container a {
+        color: #4a5fc1;
+        text-decoration: none;
+      }
+      .header-menu-container {
+        display: flex;
+        flex: 0 0 80px;
+        background-color: white;
+      }
+      .header-image-container {
+        display: flex;
+        flex: 0 0 80px;
+        background-color: white;
+        cursor: pointer;
+      }
+
+      .leftBar {
+        position: absolute;
+        background-color: white;
+        width: 80px;
+        left: 0;
+        top: 80px;
+        height: calc(100vh - 80px);
+      }
+      .leftBar-share-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 200px;
+        background-color: #333;
+      }
+      .iconContainer {
+        margin: auto;
+      }
+      .iconContainer img {
+        display: block;
+        margin: 20px auto;
+      }
+      .leftBar-page-border-design {
+        margin: auto;
+        height: calc(100% - 200px);
+        width: 3px;
+        margin: auto;
+        background-color: #c4c4c4;
+      }
+      .rightBar {
+        position: absolute;
+        background-color: white;
+        width: 80px;
+        height: calc(100% - 160px);
+        right: 0;
+        top: 80px;
+      }
+      .rightBar-page-border-design {
+        margin: auto;
+        height: calc(100% - 150px);
+        width: 3px;
+        margin: auto;
+        background-color: #c4c4c4;
+      }
+      .rightBar-share-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 150px;
+        background-color: #4a5fc1;
+      }
+      .rightBar-share-container div:first-child {
+        text-align: center;
+        font-size: 40px;
+        color: white;
+        margin: 10px 0;
+      }
+      .rightBar-share-container div:nth-child(2) {
+        text-align: center;
+        width: 100%;
+        margin: 10px 0;
+        color: white;
+      }
+      .footer-container {
+        position: absolute;
+        display: flex;
+        background-color: white;
+        width: 100vw;
+        height: 80px;
+        bottom: 0;
+      }
+      .footer-page-border-design {
+        flex: 0 0 calc(100% - 750px);
+        margin: auto;
+        height: 3px;
+        background-color: #c4c4c4;
+      }
+      .footer {
+        display: flex;
+        flex: 0 0 600px;
+        background-color: #333;
+        height: 100%;
+      }
+      .footer div {
+        text-align: center;
+        color: white;
+        margin: auto;
+      }
+      .main {
+        display: flex;
+        height: calc(100vh - 160px);
+        width: calc(100vw - 160px);
+        margin: auto;
+      }
+
+      .mainContainer {
+        margin: auto;
+        width: 65%;
+      }
+      .mainContainer button {
+        display: block;
+        width: 200px;
+        margin: 20px 0;
+        padding: 20px;
+        background-color: #333;
+        color: white;
+        border: none;
+      }
+      .hero {
+        font-size: 3rem;
+      }
+      .hero b {
+        font-weight: normal;
+        font-size: 3rem;
+      }
+      .hero span {
+        color: #4a5fc1;
+        font-size: 3.3rem;
+      }
+      .heroDescription {
+        color: #333;
+        width: 80%;
+      }
+
+      .projectsContainer {
+        display: none;
+        width: calc(100% - 200px);
+        height: 60vh;
+        margin: auto;
+        overflow: auto;
+        white-space: nowrap;
+        padding: 20px 10px;
+      }
+
+      .projectsContainer::-webkit-scrollbar {
+        display: none;
+      }
+
+      .items {
+        display: inline-block;
+        position: relative;
+        background-color: #333;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        width: 60%;
+        height: 100%;
+        border-radius: 10px;
+        margin-right: 40px;
+      }
+
+      .overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 10%;
+        width: 100%;
+        border-radius: 10px;
+        color: white;
+        padding: 10px;
+        transition: 500ms;
+      }
+      .items:hover .overlay {
+        left: 0;
+        bottom: 0;
+        opacity: 0.7;
+        height: 100%;
+        background-color: #333;
+        color: white;
+      }
+      .itemContent {
+        position: absolute;
+        display: none;
+      }
+      .items:hover .itemContent {
+        display: block;
+        width: 100%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 1;
+        transition: 500ms;
+      }
+      .projectOrder {
+        display: flex;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background-color: #4a5fc1;
+        color: white;
+        padding: auto;
+        z-index: 1;
+      }
+
+      .contactContainer {
+        display: none;
+        margin: auto;
+        width: 65%;
+      }
+
+      .GGMMPL_image1 {
+        display: block;
+      }
+      .GGMMPL_image2 {
+        display: none;
+      }
+
+      @media only screen and (min-width: 1367px) {
+        /* For big screens: */
+        .hero {
+          font-size: 2rem;
+        }
+        .hero b {
+          font-size: 3rem;
+        }
+        .hero span {
+          color: #4a5fc1;
+          font-size: 5rem;
+        }
+        .heroDescription {
+          color: #333;
+          font-size: 1rem;
+          width: 70%;
+        }
+
+        .GGMMPL_image1 {
+          display: inline-block;
+        }
+        .GGMMPL_image2 {
+          display: none;
+        }
+      }
+
+      @media only screen and (max-width: 768px) {
+        .cursor {
+          display: none;
+        }
+        .menu {
+          position: absolute;
+          display: flex;
+          top: 0;
+          right: -50vw;
+          background-color: #4a5fc1;
+          height: 100%;
+          opacity: 0.9;
+          width: 50vw;
+          z-index: 1;
+          border-radius: 20px 0 0 20px;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+            0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          transition: 500ms;
+        }
+        .menuOpen {
+          top: 0;
+          right: 0;
+        }
+
+        .menuCloseBtnCont {
+          position: absolute;
+          display: flex;
+          padding: 10px;
+          top: 45vh;
+          right: calc(-110vw + 50px);
+          width: 60px;
+          height: 60px;
+          background-color: #333;
+          border-radius: 50%;
+          z-index: 1;
+          transition: 500ms;
+        }
+        .menuCloseBtnContActive {
+          right: calc(50vw + 50px);
+        }
+        .leftBar {
+          display: none;
+        }
+        .rightBar {
+          display: none;
+        }
+        .header-contacts-container {
+          display: none;
+        }
+        .page-subtitle-container {
+          flex: 0 0 80%;
+        }
+        .page-subtitle {
+          margin: auto auto auto 20px;
+        }
+        .header-image-container {
+          display: none;
+        }
+
+        .main {
+          display: flex;
+          height: calc(100vh - 130px);
+          width: calc(100vw);
+          margin: auto;
+        }
+        .mainContainer {
+          margin: auto;
+          width: 100%;
+          padding: 0 20px;
+        }
+        .mainContainer button {
+          display: block;
+          margin: 10px 0;
+          width: 150px;
+          padding: 15px;
+          background-color: #333;
+          color: white;
+          border: none;
+        }
+        .hero {
+          font-size: 1.2rem;
+        }
+        .hero b {
+          font-weight: normal;
+          font-size: 1.5rem;
+        }
+        .hero span {
+          color: #4a5fc1;
+          width: 100%;
+          font-size: 2.8rem;
+        }
+        .heroDescription {
+          color: #333;
+          font-size: 0.8rem;
+          width: 100%;
+        }
+        .footer {
+          flex: 0 0 100%;
+          padding: 0 10px;
+          font-size: 0.8rem;
+        }
+        .footer-container {
+          height: 50px;
+        }
+
+        .projectsContainer {
+          display: none;
+          position: relative;
+          width: calc(100%);
+          height: calc(100vh - 130px);
+          margin: auto;
+          overflow: auto;
+          white-space: nowrap;
+          padding: 20px;
+        }
+
+        .items {
+          display: block;
+          position: relative;
+          background-color: #333;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+            0 6px 20px 0 rgba(0, 0, 0, 0.19);
+          width: 100%;
+          height: 80%;
+          border-radius: 0;
+          margin: 20px auto;
+          opacity: 0.5;
+        }
+        .GGMMPL_image1 {
+          display: none;
+        }
+        .GGMMPL_image2 {
+          display: block;
+          height: 100%;
+        }
+        .items:hover .itemContent {
+          display: flex;
+          flex-direction: column;
+          width: 80%;
+          opacity: 1;
+          transition: 500ms;
+        }
+        .projectOrder {
+          display: flex;
+          position: absolute;
+          top: 20px;
+          left: 20px;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background-color: #4a5fc1;
+          color: white;
+          padding: auto;
+          z-index: 1;
+        }
+        .contactContainer {
+          display: none;
+          margin: auto;
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cursor"></div>
+
+    <div class="menu">
+      <div style="margin: auto">
+        <div onclick="openHomePage()">HOME</div>
+        <div onclick="openProjectPage()">PROJECTS</div>
+        <div>ABOUT</div>
+        <div onclick="openContactPage()">CONTACT</div>
+      </div>
+    </div>
+
+    <div class="menuCloseBtnCont" onclick="menuToggle()">
+      <span style="color: white; font-weight: bolder; margin: auto">X</span>
+    </div>
+
+    <div class="container">
+      <div class="header">
+        <div class="page-subtitle-container">
+          <div class="page-subtitle">
+            <b class="pageTitle">HOME</b>
+          </div>
+        </div>
+        <div class="pageBorderDesignTop"></div>
+        <div class="header-contacts-container">
+          <div>
+            <span>01. CALL </span>
+            <a href="tel:+919617195172">+91 9617195172</a>
+          </div>
+          <div>
+            <span>02. WRITE </span>
+            <a href="mailto:manishchandra012@gmail.com"
+              >manishchandra012@gmail.com</a
+            >
+          </div>
+        </div>
+        <div class="header-menu-container" onclick="menuToggle()">
+          <img src="./images/menu.svg" style="margin: auto; width: 50px" />
+        </div>
+        <div class="header-image-container">
+          <img
+            src="./images/img.svg"
+            style="margin: auto; width: 50px; border-radius: 100%"
+          />
+        </div>
+
+        <div class="leftBar">
+          <div class="leftBar-share-container">
+            <div class="iconContainer">
+              <img src="./images/instagram.svg" style="width: 50px" />
+              <img src="./images/whatsapp.svg" style="width: 50px" />
+            </div>
+          </div>
+          <div class="leftBar-page-border-design"></div>
+        </div>
+
+        <div class="rightBar">
+          <div class="rightBar-page-border-design"></div>
+          <div class="rightBar-share-container">
+            <div><b>+</b></div>
+            <div><b>SHARE</b></div>
+          </div>
+        </div>
+        <div class="footer-container">
+          <div class="footer-page-border-design">
+            <div
+              style="
+                position: absolute;
+                bottom: 10px;
+                left: 30px;
+                font-size: 8rem;
+                color: #4a5fc1;
+              "
+            >
+              .
+            </div>
+          </div>
+          <div class="footer">
+            <div>© MANISHCHANDRA.CO 2020 / ALL RIGHTS RESERVED.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main">
+        <div
+          style="
+            position: absolute;
+            bottom: 90px;
+            right: 150px;
+            font-size: 4rem;
+            font-weight: bold;
+            color: #4a5fc1;
+          "
+        >
+          < >
+        </div>
+        <!-- home section start-->
+
+        <div class="mainContainer">
+          <div>
+            <span class="hero"
+              ><b
+                >Hii, I'm <b style="font-weight: bolder">manish.</b> <br />
+                <span style="font-weight: bolder"
+                  >I am a full stack web developer</span
+                ></b
+              ></span
+            >
+          </div>
+          <div class="heroDescription">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua
+          </div>
+          <div>
+            <button onclick="openProjectPage()">
+              <b>VIEW PROJECTS</b>
+            </button>
+          </div>
+        </div>
+        <!-- home section end-->
+
+        <!-- project section start-->
+        <div class="projectsContainer">
+          <div class="items">
+            <div class="projectOrder">
+              <span style="margin: auto; font-weight: bolder; font-size: 1.5rem"
+                >1</span
+              >
+            </div>
+            <img
+              class="GGMMPL_image1"
+              style="border-radius: 10px"
+              src="./images/colorful-palm-silhouettes-background_23-2148541792.jpg"
+              width="100%"
+            />
+
+            <img
+              class="GGMMPL_image2"
+              style="border-radius: 10px"
+              src="./images/GGMMPL_mobile.png"
+              width="100%"
+            />
+            <div class="overlay"></div>
+
+            <div class="itemContent">
+              <div
+                style="
+                  color: white;
+                  white-space: normal;
+                  text-align: center;
+                  width: 50%;
+                  margin: auto;
+                "
+              >
+                A great looking website for GoyalGlobalMetalMart showcasing all
+                of their products along with a metal calculator that calculates
+                weight of selected product in real time as user inputs the
+                required length.
+              </div>
+              <button
+                style="
+                  display: block;
+                  margin: 10px auto;
+                  width: 150px;
+                  font-weight: bold;
+                  padding: 10px;
+                  background-color: #4a5fc1;
+                  border: none;
+                  border-radius: 10px;
+                "
+              >
+                <a
+                  style="text-decoration: none; color: white"
+                  href="https://www.goyalglobalmetalmart.com"
+                  >Visit site..</a
+                >
+              </button>
+            </div>
+          </div>
+
+          <div class="items">
+            <div class="projectOrder">
+              <span style="margin: auto; font-weight: bolder; font-size: 1.5rem"
+                >2</span
+              >
+            </div>
+            <img
+              class="GGMMPL_image1"
+              style="border-radius: 10px"
+              src="./images/tropical-foliage-background_53876-91352.jpg"
+              width="100%"
+            />
+
+            <img
+              class="GGMMPL_image2"
+              style="border-radius: 10px"
+              src="./images/GGMMPL_mobile.png"
+              width="100%"
+            />
+            <div class="overlay"></div>
+
+            <div class="itemContent">
+              <div
+                style="
+                  color: white;
+                  white-space: normal;
+                  text-align: center;
+                  width: 50%;
+                  margin: auto;
+                "
+              >
+                A great looking website for GoyalGlobalMetalMart showcasing all
+                of their products along with a metal calculator that calculates
+                weight of selected product in real time as user inputs the
+                required length.
+              </div>
+              <button
+                style="
+                  display: block;
+                  margin: 10px auto;
+                  width: 150px;
+                  font-weight: bold;
+                  padding: 10px;
+                  background-color: #4a5fc1;
+                  border: none;
+                  border-radius: 10px;
+                "
+              >
+                <a
+                  style="text-decoration: none; color: white"
+                  href="https://www.goyalglobalmetalmart.com"
+                  >Visit site..</a
+                >
+              </button>
+            </div>
+          </div>
+
+          <div class="items">
+            <div class="projectOrder">
+              <span style="margin: auto; font-weight: bolder; font-size: 1.5rem"
+                >3</span
+              >
+            </div>
+            <img
+              class="GGMMPL_image1"
+              style="border-radius: 10px"
+              src="./images/flat-geometric-background_23-2148958715.jpg"
+              width="100%"
+            />
+
+            <img
+              class="GGMMPL_image2"
+              style="border-radius: 10px"
+              src="./images/GGMMPL_mobile.png"
+              width="100%"
+            />
+            <div class="overlay"></div>
+
+            <div class="itemContent">
+              <div
+                style="
+                  color: white;
+                  white-space: normal;
+                  text-align: center;
+                  width: 50%;
+                  margin: auto;
+                "
+              >
+                A great looking website for GoyalGlobalMetalMart showcasing all
+                of their products along with a metal calculator that calculates
+                weight of selected product in real time as user inputs the
+                required length.
+              </div>
+              <button
+                style="
+                  display: block;
+                  margin: 10px auto;
+                  width: 150px;
+                  font-weight: bold;
+                  padding: 10px;
+                  background-color: #4a5fc1;
+                  border: none;
+                  border-radius: 10px;
+                "
+              >
+                <a
+                  style="text-decoration: none; color: white"
+                  href="https://www.goyalglobalmetalmart.com"
+                  >Visit site..</a
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- project section start-->
+
+        <!-- contact section start-->
+        <div class="contactContainer">
+          <h1 style="text-align: center">CONTACT ME</h1>
+          <div style="width: 50%; margin: auto">
+            <input
+              style="
+                padding: 10px;
+                width: calc(50% - 5px);
+                border: none;
+                background-color: #f1f1f1;
+                border-radius: 10px;
+                margin: 10px 0;
+              "
+              type="text"
+              placeholder="Enter your name"
+            />
+            <input
+              style="
+                padding: 10px;
+                width: calc(50% - 5px);
+                border: none;
+                background-color: #f1f1f1;
+                border-radius: 10px;
+                margin: 10px 0;
+              "
+              type="text"
+              placeholder="Enter your email"
+            />
+          </div>
+          <input
+            style="
+              display: block;
+              padding: 50px 10px;
+              width: 50%;
+              border: none;
+              background-color: #f1f1f1;
+              margin: 10px auto;
+              border-radius: 10px;
+            "
+            type="text"
+            placeholder="Enter your message"
+          />
+          <button
+            style="
+              display: block;
+              padding: 10px;
+              color: white;
+              width: 150px;
+              background-color: #4a5fc1;
+              border-radius: 10px;
+              margin: 10px auto;
+              border: none;
+            "
+          >
+            SUBMIT
+          </button>
+        </div>
+
+        <!-- contact section end-->
+      </div>
+    </div>
+  </body>
+  <script>
+    var cursor = document.querySelector(".cursor");
+    document.addEventListener("mousemove", (e) => {
+      cursor.setAttribute(
+        "style",
+        `transform: translate( ${e.pageX - 25}px, ${e.pageY - 25}px)`
+      );
+    });
+
+    function menuToggle() {
+      document.querySelector(".menu").classList.toggle("menuOpen");
+      document
+        .querySelector(".menuCloseBtnCont")
+        .classList.toggle("menuCloseBtnContActive");
+    }
+
+    function openProjectPage() {
+      document.querySelector(".pageTitle").innerHTML = "PROJECTS";
+      document.querySelector(".mainContainer").style.display = "none";
+      document.querySelector(".projectsContainer").style.display = "block";
+      document.querySelector(".contactContainer").style.display = "none";
+    }
+
+    function openHomePage() {
+      document.querySelector(".pageTitle").innerHTML = "HOME";
+      document.querySelector(".mainContainer").style.display = "block";
+      document.querySelector(".projectsContainer").style.display = "none";
+      document.querySelector(".contactContainer").style.display = "none";
+    }
+
+    function openContactPage() {
+      document.querySelector(".pageTitle").innerHTML = "CONTACT ME";
+      document.querySelector(".mainContainer").style.display = "none";
+      document.querySelector(".projectsContainer").style.display = "none";
+      document.querySelector(".contactContainer").style.display = "block";
+    }
+
+    const slider = document.querySelector(".projectsContainer");
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    slider.addEventListener("mousedown", (e) => {
+      isDown = true;
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+      console.log(e);
+    });
+
+    slider.addEventListener("mouseleave", () => {
+      isDown = false;
+    });
+
+    slider.addEventListener("mouseup", () => {
+      isDown = false;
+    });
+
+    slider.addEventListener("mousemove", (e) => {
+      e.preventDefault();
+      if (!isDown) return;
+
+      const x = e.pageX - slider.offsetLeft;
+      const walk = x - startX;
+      console.log(walk);
+      slider.scrollLeft = scrollLeft - walk;
+    });
+  </script>
+</html>
