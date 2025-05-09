@@ -1,0 +1,62 @@
+.clouds-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.cloud {
+  position: absolute;
+  opacity: 0.4;
+  filter: blur(1px);
+}
+
+.cloud-1 {
+  top: 20%;
+  animation: float-right 180s linear infinite;
+}
+
+.cloud-2 {
+  top: 40%;
+  animation: float-left 160s linear infinite;
+}
+
+.cloud-3 {
+  top: 60%;
+  animation: float-right 140s linear infinite;
+}
+
+.cloud-4 {
+  top: 80%;
+  animation: float-left 200s linear infinite;
+}
+
+@keyframes float-right {
+  0% {
+    left: -300px;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes float-left {
+  0% {
+    right: -300px;
+  }
+  100% {
+    right: 100%;
+  }
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 768px) {
+  .cloud {
+    opacity: 0.4;
+  }
+}

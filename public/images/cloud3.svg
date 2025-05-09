@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="280" height="110" viewBox="0 0 280 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M240 55C240 74.3 224.3 90 205 90H75C55.7 90 40 74.3 40 55C40 35.7 55.7 20 75 20H205C224.3 20 240 35.7 240 55Z" fill="#E6E6E6" fill-opacity="0.4"/>
+  <path d="M75 20C55.7 20 40 35.7 40 55C40 74.3 55.7 90 75 90H205C224.3 90 240 74.3 240 55C240 35.7 224.3 20 205 20" stroke="#E6E6E6" stroke-width="2"/>
+  <path d="M205 20H75C55.7 20 40 35.7 40 55C40 74.3 55.7 90 75 90H205C224.3 90 240 74.3 240 55C240 35.7 224.3 20 205 20Z" fill="white" fill-opacity="0.6"/>
+</svg>

@@ -15,6 +15,12 @@ export default function HomeContent() {
 
   return (
     <div className="mainContainer">
+      <div className="clouds-container">
+        <img src="/images/cloud1.svg" alt="Cloud" className="cloud cloud-1" />
+        <img src="/images/cloud2.svg" alt="Cloud" className="cloud cloud-2" />
+        <img src="/images/cloud3.svg" alt="Cloud" className="cloud cloud-3" />
+        <img src="/images/cloud4.svg" alt="Cloud" className="cloud cloud-4" />
+      </div>
       <div>
         <span className="hero">
           <b>
