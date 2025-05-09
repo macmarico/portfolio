@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Manish Chandra | Portfolio",
-  description: "Full Stack Web Developer Portfolio",
+  title: "ibitcode | Software Solutions",
+  description: "Professional Software Development Services",
 };
 
 export default function RootLayout({

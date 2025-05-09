@@ -44,7 +44,7 @@ export default function Header({ pageTitle }: HeaderProps) {
       </div>
       <div className="header-image-container hidden md:flex flex-[0_0_80px] bg-white cursor-pointer">
         <Image
-          src="/images/img.svg"
+          src="/images/profile.svg"
           alt="Profile"
           width={50}
           height={50}
@@ -54,3 +54,5 @@ export default function Header({ pageTitle }: HeaderProps) {
     </div>
   );
 }
+
+

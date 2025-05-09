@@ -6,7 +6,7 @@ export default function Header() {
   const menuToggle = () => {
     const menu = document.querySelector('.menu');
     const menuCloseBtn = document.querySelector('.menuCloseBtnCont');
-    
+
     menu?.classList.toggle('menuOpen');
     menuCloseBtn?.classList.toggle('menuCloseBtnContActive');
   };
@@ -42,7 +42,7 @@ export default function Header() {
       </div>
       <div className="header-image-container">
         <Image
-          src="/images/img.svg"
+          src="/images/profile.svg"
           alt="Profile"
           width={50}
           height={50}

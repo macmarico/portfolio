@@ -37,7 +37,7 @@ export default function Home() {
       const projectsContainer = document.querySelector('.projectsContainer');
       const contactContainer = document.querySelector('.contactContainer');
 
-      if (pageTitle) pageTitle.innerHTML = 'SOFTWARE SOLUTIONS';
+      if (pageTitle) pageTitle.innerHTML = 'IBITCODE';
       if (mainContainer) (mainContainer as HTMLElement).style.display = 'block';
       if (projectsContainer) (projectsContainer as HTMLElement).style.display = 'none';
       if (contactContainer) (contactContainer as HTMLElement).style.display = 'none';
@@ -122,7 +122,7 @@ export default function Home() {
     // Add typewriter animation
     const typewriterElement = document.getElementById('typewriter');
     const phrases = [
-      'Custom Software Solutions',
+      'ibitcode Software Solutions',
       'Web Application Development',
       'Mobile App Development'
     ];
@@ -186,7 +186,7 @@ export default function Home() {
         <div className="header">
           <div className="page-subtitle-container">
             <div className="page-subtitle">
-              <b className="pageTitle">SOFTWARE SOLUTIONS</b>
+              <b className="pageTitle">IBITCODE</b>
             </div>
           </div>
           <div className="pageBorderDesignTop"></div>
@@ -207,7 +207,7 @@ export default function Home() {
           </div>
           <div className="header-image-container">
             <img
-              src="/images/img.svg"
+              src="/images/profile.svg"
               style={{ margin: 'auto', width: '50px', borderRadius: '100%' }}
               alt="Profile"
             />
@@ -253,7 +253,7 @@ export default function Home() {
                   <span style={{ fontWeight: 'bolder' }}>
                     <span id="typewriter"></span>
                   </span> <br />
-              
+
                 </b>
               </span>
             </div>
@@ -285,7 +285,7 @@ export default function Home() {
             </div>
           </div>
           <div className="footer">
-            <div>© SOFTWARE SOLUTIONS 2024 / ALL RIGHTS RESERVED.</div>
+            <div>© IBITCODE 2024 / ALL RIGHTS RESERVED.</div>
           </div>
         </div>
       </div>
