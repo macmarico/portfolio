@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 import Image from 'next/image';
+import MainLayout from '@/components/layout/MainLayout';
 
 export default function Projects() {
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -9,17 +10,9 @@ export default function Projects() {
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
 
-  useEffect(() => {
-    // Update the page title in the header
-    const pageTitleElement = document.querySelector('.pageTitle');
-    if (pageTitleElement) {
-      pageTitleElement.innerHTML = 'PROJECTS';
-    }
-  }, []);
-
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!sliderRef.current) return;
-    
+
     setIsDown(true);
     setStartX(e.pageX - sliderRef.current.offsetLeft);
     setScrollLeft(sliderRef.current.scrollLeft);
@@ -36,21 +29,22 @@ export default function Projects() {
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDown || !sliderRef.current) return;
     e.preventDefault();
-    
+
     const x = e.pageX - sliderRef.current.offsetLeft;
     const walk = x - startX;
     sliderRef.current.scrollLeft = scrollLeft - walk;
   };
 
   return (
-    <div 
-      ref={sliderRef}
-      className="projectsContainer block w-full md:w-[calc(100%-200px)] h-[calc(100vh-130px)] md:h-[60vh] m-auto overflow-auto whitespace-nowrap p-5 md:p-[20px_10px]"
-      onMouseDown={handleMouseDown}
-      onMouseLeave={handleMouseLeave}
-      onMouseUp={handleMouseUp}
-      onMouseMove={handleMouseMove}
-    >
+    <MainLayout pageTitle="PROJECTS">
+      <div
+        ref={sliderRef}
+        className="projectsContainer block w-full md:w-[calc(100%-200px)] h-[calc(100vh-130px)] md:h-[60vh] m-auto overflow-auto whitespace-nowrap p-5 md:p-[20px_10px]"
+        onMouseDown={handleMouseDown}
+        onMouseLeave={handleMouseLeave}
+        onMouseUp={handleMouseUp}
+        onMouseMove={handleMouseMove}
+      >
       {/* Project 1 */}
       <div className="items block md:inline-block relative bg-[#333] shadow-md w-full md:w-[60%] h-[80%] md:h-full rounded-none md:rounded-[10px] my-5 md:mr-10 opacity-50 md:opacity-100">
         <div className="projectOrder flex absolute top-5 left-5 w-[50px] h-[50px] md:w-[70px] md:h-[70px] rounded-full bg-[#4a5fc1] text-white p-auto z-10">
@@ -177,5 +171,6 @@ export default function Projects() {
         </div>
       </div>
     </div>
+    </MainLayout>
   );
 }

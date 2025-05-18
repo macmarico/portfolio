@@ -246,6 +246,8 @@ align-self: center;
   width:75%;
   row-gap: 15px;
   margin: auto;
+  background-color: transparent;
+  z-index: 1;
 
 }
 .mainContainer button {
